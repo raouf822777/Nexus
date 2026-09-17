@@ -1,0 +1,59 @@
+{
+  "name": "my-crypto-swap",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@bigmi/react": "^0.9.2",
+    "@lifi/widget": "^4.6.0",
+    "@lifi/widget-provider-bitcoin": "^4.2.3",
+    "@lifi/widget-provider-ethereum": "^4.1.4",
+    "@lifi/widget-provider-solana": "^4.1.4",
+    "@lifi/widget-provider-stellar": "^4.2.0",
+    "@lifi/widget-provider-sui": "^4.1.4",
+    "@lifi/widget-provider-tron": "^4.1.4",
+    "@mysten/dapp-kit-react": "^2.1.31",
+    "@tanstack/react-query": "^5.103.1",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^13.5.0",
+    "@tronweb3/tronwallet-adapter-react-hooks": "^1.1.14",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.126",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@wagmi/core": "^3.6.5",
+    "bs58": "^6.0.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-router-dom": "^7.18.4",
+    "react-scripts": "5.0.1",
+    "typescript": "^4.9.5",
+    "wagmi": "^3.7.7",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
