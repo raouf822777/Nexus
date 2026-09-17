@@ -52,7 +52,7 @@ const SwapPage = () => {
         {/* الطرف الأيمن: الويدجت */}
         <div style={styles.heroRight}>
           <div style={styles.widgetContainer}>
-            <LiFiWidget config={widgetConfig} />
+            <LiFiWidget integrator="raouf" config={widgetConfig as any} />
           </div>
         </div>
       </section>
