@@ -311,9 +311,9 @@ const styles: { [key: string]: React.CSSProperties } = {
     fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
   },
   navbar: {
-    display: 'flex',
-    justify: 'space-between',
-    alignItems: 'center',
+  display: 'flex',
+  justifyContent: 'space-between', // ✅ الصحيح
+  alignItems: 'center',
     padding: '20px 40px',
     backgroundColor: '#0d0e12',
     borderBottom: '1px solid #1a1c23',
