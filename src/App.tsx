@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { LiFiWidget } from '@lifi/widget';
 import { EthereumProvider } from '@lifi/widget-provider-ethereum';
@@ -6,6 +6,8 @@ import { SolanaProvider } from '@lifi/widget-provider-solana';
 import { BitcoinProvider } from '@lifi/widget-provider-bitcoin';
 import { SuiProvider } from '@lifi/widget-provider-sui';
 import { StellarProvider } from '@lifi/widget-provider-stellar';
+
+const CONTRACT_ADDRESS = "0x1d83f1cd9f42ce46f13d8af490993da95b2fc8d9";
 
 const widgetConfig: any = {
   integrator: 'raouf',
@@ -29,7 +31,30 @@ const widgetConfig: any = {
   },
 };
 
-// 1. الصفحة الرئيسية (Home & Swap Page) - الويدجت بجانب النص على اليمين
+// مكوّن نسخ عنوان العقد التفاعلي (Token Contract Box Component)
+const ContractAddressBox = () => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(CONTRACT_ADDRESS);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <div style={styles.contractContainer}>
+      <span style={styles.contractLabel}>$NEXUS Contract:</span>
+      <code style={styles.contractCode}>
+        {CONTRACT_ADDRESS.slice(0, 6)}...{CONTRACT_ADDRESS.slice(-4)}
+      </code>
+      <button onClick={handleCopy} style={copied ? styles.copiedBtn : styles.copyBtn}>
+        {copied ? '✓ Copied' : '📋 Copy'}
+      </button>
+    </div>
+  );
+};
+
+// 1. الصفحة الرئيسية (Home & Swap Page)
 const SwapPage = () => {
   return (
     <div style={styles.homeWrapper}>
@@ -37,9 +62,14 @@ const SwapPage = () => {
       <section style={styles.heroSection}>
         {/* الطرف الأيسر: النصوص والوصف */}
         <div style={styles.heroLeft}>
-          <div style={styles.heroBadge}>
-            <span>🚀 Multi-Chain Cross-Bridge Protocol</span>
+          <div style={styles.heroBadgeRow}>
+            <div style={styles.heroBadge}>
+              <span>🚀 Multi-Chain Cross-Bridge Protocol</span>
+            </div>
+            {/* شريط عنوان التوكن المميز */}
+            <ContractAddressBox />
           </div>
+
           <h1 style={styles.heroTitle}>
             Swap Any Token <br />
             <span style={styles.heroTitleGradient}>Across Any Blockchain</span>
@@ -195,6 +225,10 @@ const BurnPage = () => (
         50% Revenue <span style={styles.burnTitleHighlight}>Buyback & Burn</span>
       </h1>
 
+      <div style={{ marginBottom: '25px' }}>
+        <ContractAddressBox />
+      </div>
+
       <p style={styles.burnDescription}>
         We are committed to building long-term value for our community. To reduce the total circulating supply of{' '}
         <strong>NEXUSSWAP ($NEXUS)</strong>, 50% of all platform revenues are dedicated to automated token buybacks and permanent burns.
@@ -278,7 +312,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   navbar: {
     display: 'flex',
-    justifyContent: 'space-between',
+    justify: 'space-between',
     alignItems: 'center',
     padding: '20px 40px',
     backgroundColor: '#0d0e12',
@@ -310,6 +344,48 @@ const styles: { [key: string]: React.CSSProperties } = {
     flex: '1',
   },
 
+  /* Contract Address Component Styles */
+  contractContainer: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '8px',
+    backgroundColor: '#12151e',
+    border: '1px solid #282f42',
+    borderRadius: '20px',
+    padding: '4px 12px',
+    fontSize: '13px',
+  },
+  contractLabel: {
+    color: '#8d94a5',
+    fontWeight: '600',
+  },
+  contractCode: {
+    color: '#7c5dfa',
+    fontFamily: 'monospace',
+    fontWeight: 'bold',
+  },
+  copyBtn: {
+    backgroundColor: '#202636',
+    border: '1px solid #323b52',
+    color: '#fff',
+    borderRadius: '12px',
+    padding: '3px 8px',
+    fontSize: '11px',
+    cursor: 'pointer',
+    fontWeight: '600',
+    transition: 'all 0.2s ease',
+  },
+  copiedBtn: {
+    backgroundColor: '#1c3b2b',
+    border: '1px solid #2e6045',
+    color: '#4ade80',
+    borderRadius: '12px',
+    padding: '3px 8px',
+    fontSize: '11px',
+    cursor: 'pointer',
+    fontWeight: '600',
+  },
+
   /* Home Section Wrapper */
   homeWrapper: {
     display: 'flex',
@@ -339,6 +415,13 @@ const styles: { [key: string]: React.CSSProperties } = {
     justifyContent: 'center',
     alignItems: 'center',
   },
+  heroBadgeRow: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px',
+    flexWrap: 'wrap',
+    marginBottom: '20px',
+  },
   heroBadge: {
     display: 'inline-block',
     backgroundColor: '#1b1437',
@@ -348,7 +431,6 @@ const styles: { [key: string]: React.CSSProperties } = {
     padding: '6px 18px',
     fontSize: '13px',
     fontWeight: '600',
-    marginBottom: '20px',
   },
   heroTitle: {
     fontSize: '46px',
@@ -375,7 +457,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   /* Stats Bar Styles */
   statsBar: {
     display: 'flex',
-    justifyContent: 'space-around',
+    justify: 'space-around',
     alignItems: 'center',
     width: '100%',
     backgroundColor: '#0f1117',
