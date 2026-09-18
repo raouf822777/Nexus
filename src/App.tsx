@@ -457,7 +457,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   /* Stats Bar Styles */
   statsBar: {
     display: 'flex',
-    justify: 'space-around',
+    justifyContent: 'space-around',
     alignItems: 'center',
     width: '100%',
     backgroundColor: '#0f1117',
