@@ -16,7 +16,7 @@ const widgetConfig: any = {
   fromToken: '0x0000000000000000000000000000000000000000', // ETH الافتراضي
 
   toChain: 4663, // شبكة الإيثيريوم (أو رقم الشبكة الخاصة بعملتك)
-  toToken: '0x1d83f1cd9f42ce46f13d8af490993da95b2fc8d9', // عقد عملتك $NEXUS التلقائي
+  toToken: '0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168', // عقد عملتك $NEXUS التلقائي
   feeConfig: {
     fee: 0.01,
     name: 'Nexus Swap Fee',
