@@ -11,6 +11,12 @@ const CONTRACT_ADDRESS = "0x1d83f1cd9f42ce46f13d8af490993da95b2fc8d9";
 
 const widgetConfig: any = {
   integrator: 'raouf',
+  // 1. تحديد خيارات المبادلة الافتراضية
+  fromChain: 4663, // Ethereum Mainnet (إيثيريوم)
+  fromToken: '0x0000000000000000000000000000000000000000', // ETH الافتراضي
+
+  toChain: 4663, // شبكة الإيثيريوم (أو رقم الشبكة الخاصة بعملتك)
+  toToken: '0x1d83f1cd9f42ce46f13d8af490993da95b2fc8d9', // عقد عملتك $NEXUS التلقائي
   feeConfig: {
     fee: 0.01,
     name: 'Nexus Swap Fee',
